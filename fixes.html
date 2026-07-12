@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nameli 网站修复操作指引（甲方版）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#2B3A67; --teal:#00B4D8; --coral:#FF5A5A; --red:#E03131;
+  --mint:#06D6A0; --amber:#F7A800; --purple:#7B68EE;
+  --ink:#1a1a2e; --ink2:#4a4a68; --muted:#8b8ba3;
+  --bg:#f6f7fb; --card:#fff; --line:#e6e9f2;
+  --sh:0 2px 14px rgba(43,58,103,.07); --shh:0 10px 36px rgba(43,58,103,.14);
+  --r:18px; --font:'Plus Jakarta Sans','Noto Sans SC',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font);font-size:15px;line-height:1.8;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+.hero{background:#0e0e12;color:#fff;padding:3.6rem 1.5rem 3.4rem;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 10%,rgba(247,168,0,.18),transparent 40%),radial-gradient(circle at 85% 90%,rgba(0,180,216,.16),transparent 42%)}
+.hero-in{position:relative;z-index:2;max-width:840px;margin:0 auto}
+.eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:3px;color:var(--amber);border:1.5px solid rgba(247,168,0,.4);padding:5px 18px;border-radius:99px;margin-bottom:1.3rem}
+.hero h1{font-size:36px;font-weight:800;line-height:1.18;margin-bottom:.7rem}
+.hero p{color:rgba(255,255,255,.6);font-size:15px}
+.hero .meta{margin-top:1.4rem;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.hero .meta span{font-size:12px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);padding:5px 14px;border-radius:99px;color:rgba(255,255,255,.78)}
+.wrap{max-width:920px;margin:0 auto;padding:2.5rem 1.4rem 4rem}
+.callout{background:linear-gradient(100deg,#fff,#fbfcff);border:1px solid var(--line);border-left:5px solid var(--teal);border-radius:14px;padding:18px 22px;margin-bottom:2.4rem;box-shadow:var(--sh);font-size:14.5px;color:var(--ink2)}
+.callout b{color:var(--ink)}
+.sec{margin-bottom:2.6rem}
+.sec-h{display:flex;align-items:center;gap:10px;margin-bottom:1.1rem}
+.sec-h .ico{font-size:22px}
+.sec-h h2{font-size:21px;font-weight:800;color:var(--navy)}
+.fixcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:24px 26px;margin-bottom:20px}
+.badge{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.5px;padding:4px 11px;border-radius:6px;margin-bottom:10px;margin-right:6px}
+.b-p0{background:#ffe9e9;color:var(--red)} .b-p1{background:#fff4e0;color:#b06d00} .b-p2{background:#e3f9ff;color:#0883a0}
+.b-time{background:#f0f1f5;color:var(--muted)}
+.fixcard h3{font-size:17.5px;font-weight:800;color:var(--ink);margin-bottom:6px;line-height:1.4}
+.why{font-size:13.5px;color:var(--ink2);background:#f8f9fc;border-radius:10px;padding:10px 14px;margin:10px 0}
+.why b{color:var(--red)}
+ol.steps{margin:12px 0 0 0;padding-left:0;counter-reset:s;list-style:none}
+ol.steps li{position:relative;padding:8px 0 8px 44px;font-size:14.5px;color:var(--ink2);counter-increment:s;border-bottom:1px dashed var(--line)}
+ol.steps li:last-child{border-bottom:none}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:10px;width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center}
+ol.steps li b{color:var(--ink)}
+ol.steps li code{background:#f3f5fb;border-radius:5px;padding:1px 7px;font-size:13px;font-family:ui-monospace,Menlo,monospace;color:#7E2A1E}
+pre{background:#0e0e12;color:#e8e8ee;border-radius:10px;padding:14px 16px;font-size:12.5px;line-height:1.6;overflow-x:auto;margin:10px 0;font-family:ui-monospace,Menlo,monospace}
+.verify{background:#eefaf4;border-radius:10px;padding:11px 14px;font-size:13.5px;color:#14694a;margin-top:12px}
+.verify b{color:#0c4f37}
+.note{font-size:12.5px;color:var(--muted);margin-top:10px}
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);font-size:14px}
+th{background:var(--navy);color:#fff;text-align:left;padding:12px 16px;font-size:13px;font-weight:700}
+td{padding:11px 16px;border-top:1px solid var(--line);color:var(--ink2);vertical-align:top}
+td:first-child{font-weight:800;color:var(--ink);white-space:nowrap}
+.foot{text-align:center;color:var(--muted);font-size:12.5px;padding:2.4rem 1rem;border-top:1px solid var(--line)}
+.foot a{color:var(--teal);text-decoration:none;font-weight:700}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-in">
+    <div class="eyebrow">FIX PLAYBOOK · 甲方操作指引</div>
+    <h1>Nameli 网站修复操作指引</h1>
+    <p>全部在 WordPress 后台完成，不需要改代码文件 · 按 P0 → P1 → P2 顺序做</p>
+    <p style="font-size:13px;margin-top:.4rem;color:rgba(255,255,255,.45)">依据：2026-07-12 网站深度诊断（每条问题的实测证据见「网站深度诊断」页）</p>
+    <div class="meta"><span>🧰 WordPress + Blocksy + Stackable</span><span>🔌 Yoast SEO / WiserReview / Klaviyo</span><span>⏱️ P0 合计约半天</span></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="callout">
+    <b>开始前 3 件事：</b>① 用管理员账号登录 WordPress 后台（namelicraft.com/wp-admin）② 如装有缓存插件，每改完一项记得「清除缓存」③ 每项底部都有「怎么确认改成功了」，改完当场验证，不要凭后台显示判断。
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="ico">🚨</span><h2>P0 · 本周内完成（直接影响 Google 流量）</h2></div>
+
+    <div class="fixcard">
+      <span class="badge b-p0">P0 · #1</span><span class="badge b-time">约 20 分钟</span>
+      <h3>首页加 H1/H2 —— 现在整页没有一个大标题标签</h3>
+      <div class="why"><b>为什么：</b>Hero 大标题「Best Sellers」实际是两个 h5 标签（其中一个是空的），Google 读不懂页面主题，自然流量入口等于焊死。这是全部问题里对流量影响最大的一条。</div>
+      <ol class="steps">
+        <li>后台左侧 <b>页面</b> → 找到首页 → <b>编辑</b>（进入块编辑器）</li>
+        <li>点中轮播图里的大标题「Best Sellers」文字块（Stackable 标题块），右侧设置面板找到 <b>HTML 标签 / Heading Tag</b> 下拉（h1~h6），把 <code>h5</code> 改成 <code>h1</code></li>
+        <li>标题文案顺手改成含关键词的，建议：<code>Personalized Baby Shower Gifts &amp; Name Baskets</code>（第二张轮播「Baby Shower」同法处理，但整页只能有一个 h1——第二张设为 h2）</li>
+        <li>注意：实测有一个<b>空的 h5 标题块</b>（没有文字），找到后直接删除</li>
+        <li>往下滚，把「A GIFT AS UNIQUE AS THEIR NAME」等每个分区标题设为 <code>h2</code></li>
+        <li>右上角 <b>更新</b> 保存</li>
+      </ol>
+      <div class="verify"><b>验证：</b>打开 namelicraft.com 首页 → 右键「查看网页源代码」→ Ctrl+F 搜 <code>&lt;h1</code> → 能搜到且只有 1 个 = 成功。</div>
+    </div>
+
+    <div class="fixcard">
+      <span class="badge b-p0">P0 · #2</span><span class="badge b-time">约 10 分钟</span>
+      <h3>重写首页 Title —— 现在一个产品关键词都没有</h3>
+      <div class="why"><b>为什么：</b>当前 title 是 <code>Nameli | Personalized Gifts</code>，baby / custom / embroidered / basket 全没进——搜索个性化婴儿礼品的人 Google 根本不知道该给你排名。</div>
+      <ol class="steps">
+        <li>编辑首页时，页面下方找到 <b>Yoast SEO</b> 面板</li>
+        <li><b>SEO 标题</b>改为：<code>Personalized Baby Shower Gifts &amp; Custom Name Baskets | Nameli</code>（约 60 字符内）</li>
+        <li><b>元描述（Meta description）</b>补一句 150 字符内的卖点，建议：<code>Hand-embroidered name baskets, backpacks &amp; baby gifts. Spelling double-checked on every order. Free US shipping over $75.</code></li>
+        <li>产品页同理：如 Baby Shower Basket 的 title 建议加上 Personalized → <code>Personalized Baby Shower Basket with Name | Nameli</code></li>
+      </ol>
+      <div class="verify"><b>验证：</b>首页源代码搜 <code>&lt;title&gt;</code>，确认新标题已输出（缓存插件记得先清）。</div>
+    </div>
+
+    <div class="fixcard">
+      <span class="badge b-p0">P0 · #3</span><span class="badge b-time">每个产品约 30 分钟 · 先做 Top3 SKU</span>
+      <h3>产品页补文字卖点 + 全站图片补 alt</h3>
+      <div class="why"><b>为什么：</b>实测主力产品 Baby Shower Basket 文字描述只有 <b>184 字符</b>，工艺/规格/故事全在 6 张长图里——人眼看着丰富，但 Google、AI 搜索、读屏器一个字都读不到；首页 39 张图有 27 张没有 alt。这是 SEO 命脉级修复。</div>
+      <ol class="steps">
+        <li>后台 <b>产品</b> → 编辑 Baby Shower Basket（先做卖得最好的 3 个 SKU）</li>
+        <li>在<b>产品描述</b>区，每张卖点长图<b>下方</b>补一段对应的文字版（合计 200-300 词）：材质（cotton rope）、尺寸（L/M 具体 cm）、刺绣工艺（hand-embroidered wool yarn name）、礼盒清单（内含哪些件）、发货时效</li>
+        <li>不要删图——图照留，文字是补给搜索引擎和读屏器的</li>
+        <li>图片 alt：后台 <b>媒体</b> → 点开每张产品图 → 右侧<b>替代文本</b>填一句描述，例：<code>Personalized baby shower basket with hand-embroidered name Oliva</code>（先补首页和 Top3 产品页用到的图）</li>
+      </ol>
+      <div class="verify"><b>验证：</b>产品页源代码搜补写的那段文字能搜到；随机点 3 张图源代码看 <code>alt="..."</code> 非空。</div>
+    </div>
+
+    <div class="fixcard">
+      <span class="badge b-p0">P0 · #4</span><span class="badge b-time">约 15 分钟</span>
+      <h3>移动端悬浮件遮挡 —— VIP OFFER 浮标盖住了卖点文字</h3>
+      <div class="why"><b>为什么：</b>手机上打开产品页，左下角 VIP OFFER 圆形浮标直接压住产品副标题和卖点列表（实测截图见诊断页 #3）。手机是主要流量入口，用户看卖点的黄金位置被自家挂件占了。</div>
+      <ol class="steps">
+        <li>这个浮标是 <b>Klaviyo 弹窗表单关闭后留下的 Teaser 按钮</b>（判断依据：它只在弹过窗的会话中出现，与弹窗同生命周期）</li>
+        <li>登录 <b>Klaviyo</b> → Sign-up forms → 找到「Get a 10% off coupon」这个表单 → 编辑</li>
+        <li>找到 <b>Teaser</b> 选项卡：<b>关闭 Mobile 端 Teaser</b>（推荐），或把位置从左下改到不压内容的位置</li>
+        <li>同一个编辑器里顺手做 P2 · #8：<b>Display / Targeting &amp; Behavior</b> 里把弹出时机从「立即」改成 <b>滚动 50% 或停留 15 秒</b>——广告落地流量第一眼别吃全屏弹窗</li>
+      </ol>
+      <div class="verify"><b>验证：</b>手机开无痕窗口访问产品页 → 关掉弹窗后左下角不再有浮标压住文字。</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="ico">⚠️</span><h2>P1 · 两周内完成（信任感细节）</h2></div>
+
+    <div class="fixcard">
+      <span class="badge b-p1">P1 · #5</span><span class="badge b-time">约 10 分钟</span>
+      <h3>「Write a Review」按钮白字看不清（对比度 1.71，标准要 4.5）</h3>
+      <ol class="steps">
+        <li>优先在 <b>WiserReview 后台</b>找按钮颜色设置：文字色改深棕 <code>#5C4327</code>（同色系不破坏奶油调性）或底色加深</li>
+        <li>如果 WiserReview 没有颜色选项，用 CSS 兜底：后台 <b>外观 → 自定义 → 附加 CSS</b>，粘贴：</li>
+      </ol>
+      <pre>/* Write a Review 按钮文字加深（原白字配奶茶底看不清） */
+.Wsrspfapp-reviewapp-heAder { color: #5C4327 !important; }</pre>
+      <div class="verify"><b>验证：</b>首页评价区的「Write a Review」肉眼清晰可读。</div>
+      <div class="note">选择器 <code>.Wsrspfapp-reviewapp-heAder</code> 为 2026-07-12 实测抓取；若 WiserReview 更新后失效，右键该按钮→检查，换成当时的 class。</div>
+    </div>
+
+    <div class="fixcard">
+      <span class="badge b-p1">P1 · #6</span><span class="badge b-time">约 10 分钟</span>
+      <h3>信任条「208 reviews on ___」断句 —— logo 显示宽度为 0</h3>
+      <ol class="steps">
+        <li>方案 A（推荐，更干净）：在 WiserReview 挂件设置里把这条徽章文案换成自有表述 <code>4.8/5 · 208 verified reviews</code> 加星标，不依赖第三方 logo</li>
+        <li>方案 B（保留 logo）：附加 CSS 强制给 logo 宽度：</li>
+      </ol>
+      <pre>/* 信任条 WiserReview logo 渲染宽度为 0 的修复 */
+.Wisely-Fixed-Typone-Link img { width: 90px !important; height: auto !important; }</pre>
+      <div class="verify"><b>验证：</b>首页信任条读起来是完整一句话，不再是「208 reviews on」悬在半空。</div>
+    </div>
+
+    <div class="fixcard">
+      <span class="badge b-p1">P1 · #7</span><span class="badge b-time">约 30 分钟</span>
+      <h3>拼写错误清理 + 社媒账号名统一</h3>
+      <div class="why"><b>为什么：</b>对一个以「把名字绣对」为卖点的品牌，站上的拼写错误是反向背书。</div>
+      <ol class="steps">
+        <li>首页编辑，修 3 处文案（两张轮播 slide 都有）：<code>treadsures</code> → <b>treasures</b>；<code>MADEWITH</code> → <b>MADE WITH</b></li>
+        <li>站内号召语写的是 <code>@nameli_offical</code>（official 拼错），而实际 Instagram 是 <code>nameli38</code>、TikTok 是 <code>nanmeli0</code> —— 三个名字对不上，粉丝找不到人</li>
+        <li>建议：注册/改名一套统一 handle（如 <code>nameli.official</code>），IG、TikTok、站内文案、页脚链接四处对齐；改不了旧账号名就把站内文案改成真实 handle</li>
+      </ol>
+      <div class="verify"><b>验证：</b>首页 Ctrl+F 搜 treadsures / MADEWITH 无结果；点页脚社媒图标能到达对应账号。</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="ico">💡</span><h2>P2 · 有空再做（体验加分）</h2></div>
+    <div class="fixcard">
+      <span class="badge b-p2">P2 · #8</span>
+      <h3>Klaviyo 弹窗延迟触发</h3>
+      <p style="font-size:14px;color:var(--ink2)">已并入 P0 · #4 第 4 步（同一个编辑器里顺手改掉）。当前是落地 0 秒即弹 + cookie 条同屏两层打扰。</p>
+    </div>
+    <div class="fixcard">
+      <span class="badge b-p2">P2 · #9</span>
+      <h3>引入品牌字体</h3>
+      <p style="font-size:14px;color:var(--ink2)">当前正文/标题是系统默认字体 + Georgia，与手写体 logo 和高水准摄影不匹配。建议在 Blocksy（外观 → 自定义 → 排版）选一款衬线标题字体（如 Playfair Display / Cormorant），只改标题层级即可，正文保持易读。</p>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="ico">✅</span><h2>完成核对表（按顺序打勾）</h2></div>
+    <table>
+      <tr><th>项</th><th>动作</th><th>验证标准</th></tr>
+      <tr><td>P0 #1</td><td>首页 H1 + 分区 H2</td><td>源代码有且仅有 1 个 &lt;h1&gt;，含关键词</td></tr>
+      <tr><td>P0 #2</td><td>Title / 描述重写</td><td>&lt;title&gt; 含 Personalized + Baby Shower + 品牌</td></tr>
+      <tr><td>P0 #3</td><td>Top3 产品文字卖点 + alt</td><td>产品页可搜到 200+ 词文字卖点；图 alt 非空</td></tr>
+      <tr><td>P0 #4</td><td>Klaviyo Teaser 关移动端 + 延迟弹窗</td><td>手机无痕访问：浮标不压内容，弹窗不再 0 秒弹</td></tr>
+      <tr><td>P1 #5</td><td>Write a Review 按钮对比度</td><td>肉眼清晰</td></tr>
+      <tr><td>P1 #6</td><td>信任条修复</td><td>整句完整显示</td></tr>
+      <tr><td>P1 #7</td><td>typo + handle 统一</td><td>搜不到错词；社媒四处一致</td></tr>
+    </table>
+    <p class="note">全部完成后建议：Google Search Console 里对首页和 Top3 产品页点「请求编入索引」，加速 Google 重新抓取。</p>
+  </div>
+
+</div>
+
+<div class="foot">
+  Nameli 网站修复操作指引 · 依据 2026-07-12 深度诊断 · 问题证据与截图见 <a href="site_analysis.html">网站深度诊断报告</a><br>
+  <a href="index.html">← 返回报告中心</a>
+</div>
+
+</body>
+</html>
