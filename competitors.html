@@ -88,6 +88,17 @@ td:first-child{font-weight:800;color:var(--ink);white-space:nowrap}
 /* 竞品视觉对比网格（沿用模板体系扩展） */
 .comp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
 .comp-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;transition:box-shadow .2s,transform .2s}
+.comp-row{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--sh);padding:18px 20px;margin-bottom:14px}
+.comp-row .hd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.comp-row .no{font-size:12px;font-weight:800;color:#fff;background:var(--navy);border-radius:6px;padding:2px 8px}
+.comp-row .nm{font-size:16.5px;font-weight:800;color:var(--ink)}
+.comp-row .dm{font-size:13px;color:var(--muted)}
+.pill{font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:99px}
+.pl-plat{background:#e3f9ff;color:#0883a0}.pl-price{background:#fff4e0;color:#b06d00}.pl-na{background:#f0f1f5;color:var(--muted)}
+.comp-row .bd{display:grid;grid-template-columns:1.1fr .9fr 1.1fr;gap:16px}
+@media(max-width:760px){.comp-row .bd{grid-template-columns:1fr}}
+.comp-row .fld b{display:block;font-size:11px;font-weight:800;letter-spacing:1px;color:var(--muted);margin-bottom:2px}
+.comp-row .fld{font-size:13.5px;color:var(--ink2);line-height:1.7}
 .comp-card:hover{box-shadow:var(--shh);transform:translateY(-2px)}
 .comp-card.is-client{border:2.5px solid var(--amber);box-shadow:0 6px 26px rgba(247,168,0,.22)}
 .comp-shot{background:#0e0e12;padding:12px}
@@ -207,38 +218,45 @@ td:first-child{font-weight:800;color:var(--ink);white-space:nowrap}
   <div class="sec">
     <div class="sec-h"><span class="ico">📋</span><h2>全量竞品拆解表（11 家，按相关度排序）</h2></div>
     <p class="sec-note">「未采集到」= 本次工具未获取到该字段，如实标注，不做推测。</p>
-    <div style="overflow-x:auto">
-    <table>
-      <tr><th>品牌</th><th>域名</th><th>平台</th><th>价格带</th><th>产品焦点</th><th>评价信号</th><th>定位一句话</th></tr>
-      <tr><td>MamaRaya</td><td>mamaraya.com</td><td>Shopify</td><td>$27.99-42.99</td><td>个性化婴儿礼篮、nursery 储物篮、学童用品、儿童背包（毛线名字工艺）</td><td>Trustpilot 4.3 Excellent（条数未披露）</td><td>创始人 Raya 手工个性化婴幼儿礼品，与 Nameli 品类几乎完全重合</td></tr>
-      <tr><td>KnittyBaby</td><td>knittybaby.com</td><td>Shopify</td><td>$9.99-75.98</td><td>手工刺绣名字针织品（毛衣/毯子/连体衣）+ 储物篮 + 背包</td><td>站内 1000+ verified reviews，4.9/5</td><td>有机认证材料 + 按单制作 3 天发货 + 全球 $50 包邮，评价体量领先</td></tr>
-      <tr><td>Little Chicken</td><td>littlechickenkids.com</td><td>Shopify</td><td>$28-98</td><td>个性化儿童背包、定制牛仔夹克、手提包、午餐盒、铅笔袋</td><td>站内正面评价文字，数量未采集到</td><td>刺绣名字 + 贴片的「Pick Your Item → Personalize It」流程，背包定价比 Nameli 高一倍</td></tr>
-      <tr><td>Two Blue Peas</td><td>twobluepeas.com</td><td>未采集到</td><td>$12-33</td><td>loveys/毯子/礼品套装 + 学前背包 + dance duffel + 午餐袋</td><td>未采集到</td><td>since 2007 老站，品类结构与 Nameli 高度重合，价格更低</td></tr>
-      <tr><td>Caden Lane</td><td>cadenlane.com</td><td>Shopify</td><td>$28-150+</td><td>个性化婴儿襁褓/毯子/服装/木质名字牌 + 妈咪包 + 儿童背包午餐袋</td><td>集合页未展示</td><td>个性化婴儿礼品头部 DTC，内容营销强</td></tr>
-      <tr><td>Marleylilly</td><td>marleylilly.com</td><td>Shopify</td><td>$7.99-44.99</td><td>monogram 婴儿/儿童服装、毯子、围兜、背包、母婴配饰</td><td>集合页未展示</td><td>monogram 平价量贩大站，实时预览定制工具是体验亮点</td></tr>
-      <tr><td>Sammy + Nat</td><td>sammyandnat.com</td><td>Shopify</td><td>$50-60+</td><td>高端 monogram 婴童服装、tote/duffel 包袋、毯子围兜</td><td>未展示评论数；自称送出 100,000+ 件礼物</td><td>「gift concierge」高端礼赠定位，女性创业小品牌，免费礼品包装</td></tr>
-      <tr><td>Preppy Monogrammed Gifts</td><td>preppymonogrammedgifts.com</td><td>Shopify</td><td>未采集到</td><td>in-house 刺绣 monogram 包袋（diaper/duffel/travel）、婴儿礼品、女装</td><td>接入 Loox 评论系统，数量未展示</td><td>自营刺绣工坊 + $75 包邮（与 Nameli 门槛相同），品类更宽</td></tr>
-      <tr><td>Stork Baby Gift Baskets</td><td>storkbabygiftbaskets.com</td><td>Shopify</td><td>$47-497</td><td>婴儿礼篮/尿布蛋糕/刺绣毯子浴袍毛绒，全站免费刺绣名字</td><td>弱：50 个产品仅约 8 个有评价</td><td>礼篮垂直老站，价格上探到奢侈礼盒，评价沉淀薄弱</td></tr>
-      <tr><td>Lavington Designs</td><td>lavingtondesigns.com</td><td>BigCommerce</td><td>$18.99-108.99</td><td>monogram 刺绣礼品：毯子、背包、tote、婴儿围兜毛绒、节日服饰</td><td>产品卡带 +34/+38 评论标记，总量未采集到</td><td>全龄段 monogram 礼品杂货型，母婴只是其中一条线</td></tr>
-      <tr><td>Bunnies By The Bay</td><td>bunniesbythebay.com</td><td>未采集到</td><td>未采集到</td><td>毛绒玩具/lovey 安抚巾为主的个性化婴儿礼品，FAO Schwarz 等联名</td><td>未采集到</td><td>间接竞品：IP 化毛绒路线，非刺绣包袋篮子</td></tr>
-    </table>
-    </div>
+    <div class="comp-row"><div class="hd"><span class="no">1</span><span class="nm">MamaRaya</span><span class="dm">mamaraya.com</span><span class="pill pl-plat">Shopify</span><span class="pill pl-price">$27.99–42.99</span></div>
+      <div class="bd"><div class="fld"><b>产品焦点</b>个性化婴儿礼篮、nursery 储物篮、学童用品、儿童背包（毛线名字工艺）</div><div class="fld"><b>评价信号</b>Trustpilot 4.3 Excellent（条数未披露）</div><div class="fld"><b>定位一句话</b>创始人 Raya 手工个性化婴幼儿礼品，与 Nameli 品类几乎完全重合</div></div></div>
+    <div class="comp-row"><div class="hd"><span class="no">2</span><span class="nm">KnittyBaby</span><span class="dm">knittybaby.com</span><span class="pill pl-plat">Shopify</span><span class="pill pl-price">$9.99–75.98</span></div>
+      <div class="bd"><div class="fld"><b>产品焦点</b>手工刺绣名字针织品（毛衣/毯子/连体衣）+ 储物篮 + 背包</div><div class="fld"><b>评价信号</b>站内 1000+ verified reviews，4.9/5</div><div class="fld"><b>定位一句话</b>有机认证材料 + 按单制作 3 天发货 + 全球 $50 包邮，评价体量领先</div></div></div>
+    <div class="comp-row"><div class="hd"><span class="no">3</span><span class="nm">Little Chicken</span><span class="dm">littlechickenkids.com</span><span class="pill pl-plat">Shopify</span><span class="pill pl-price">$28–98</span></div>
+      <div class="bd"><div class="fld"><b>产品焦点</b>个性化儿童背包、定制牛仔夹克、手提包、午餐盒、铅笔袋</div><div class="fld"><b>评价信号</b>站内正面评价文字，数量未采集到</div><div class="fld"><b>定位一句话</b>刺绣名字 + 贴片的「Pick Your Item → Personalize It」流程，背包定价比 Nameli 高一倍</div></div></div>
+    <div class="comp-row"><div class="hd"><span class="no">4</span><span class="nm">Two Blue Peas</span><span class="dm">twobluepeas.com</span><span class="pill pl-na">平台未采集到</span><span class="pill pl-price">$12–33</span></div>
+      <div class="bd"><div class="fld"><b>产品焦点</b>loveys/毯子/礼品套装 + 学前背包 + dance duffel + 午餐袋</div><div class="fld"><b>评价信号</b>未采集到</div><div class="fld"><b>定位一句话</b>since 2007 老站，品类结构与 Nameli 高度重合，价格更低</div></div></div>
+    <div class="comp-row"><div class="hd"><span class="no">5</span><span class="nm">Caden Lane</span><span class="dm">cadenlane.com</span><span class="pill pl-plat">Shopify</span><span class="pill pl-price">$28–150+</span></div>
+      <div class="bd"><div class="fld"><b>产品焦点</b>个性化婴儿襁褓/毯子/服装/木质名字牌 + 妈咪包 + 儿童背包午餐袋</div><div class="fld"><b>评价信号</b>集合页未展示</div><div class="fld"><b>定位一句话</b>个性化婴儿礼品头部 DTC，内容营销强</div></div></div>
+    <div class="comp-row"><div class="hd"><span class="no">6</span><span class="nm">Marleylilly</span><span class="dm">marleylilly.com</span><span class="pill pl-plat">Shopify</span><span class="pill pl-price">$7.99–44.99</span></div>
+      <div class="bd"><div class="fld"><b>产品焦点</b>monogram 婴儿/儿童服装、毯子、围兜、背包、母婴配饰</div><div class="fld"><b>评价信号</b>集合页未展示</div><div class="fld"><b>定位一句话</b>monogram 平价量贩大站，实时预览定制工具是体验亮点</div></div></div>
+    <div class="comp-row"><div class="hd"><span class="no">7</span><span class="nm">Sammy + Nat</span><span class="dm">sammyandnat.com</span><span class="pill pl-plat">Shopify</span><span class="pill pl-price">$50–60+</span></div>
+      <div class="bd"><div class="fld"><b>产品焦点</b>高端 monogram 婴童服装、tote/duffel 包袋、毯子围兜</div><div class="fld"><b>评价信号</b>未展示评论数；自称送出 100,000+ 件礼物</div><div class="fld"><b>定位一句话</b>「gift concierge」高端礼赠定位，女性创业小品牌，免费礼品包装</div></div></div>
+    <div class="comp-row"><div class="hd"><span class="no">8</span><span class="nm">Preppy Monogrammed Gifts</span><span class="dm">preppymonogrammedgifts.com</span><span class="pill pl-plat">Shopify</span><span class="pill pl-na">价格未采集到</span></div>
+      <div class="bd"><div class="fld"><b>产品焦点</b>in-house 刺绣 monogram 包袋（diaper/duffel/travel）、婴儿礼品、女装</div><div class="fld"><b>评价信号</b>接入 Loox 评论系统，数量未展示</div><div class="fld"><b>定位一句话</b>自营刺绣工坊 + $75 包邮（与 Nameli 门槛相同），品类更宽</div></div></div>
+    <div class="comp-row"><div class="hd"><span class="no">9</span><span class="nm">Stork Baby Gift Baskets</span><span class="dm">storkbabygiftbaskets.com</span><span class="pill pl-plat">Shopify</span><span class="pill pl-price">$47–497</span></div>
+      <div class="bd"><div class="fld"><b>产品焦点</b>婴儿礼篮/尿布蛋糕/刺绣毯子浴袍毛绒，全站免费刺绣名字</div><div class="fld"><b>评价信号</b>弱：50 个产品仅约 8 个有评价</div><div class="fld"><b>定位一句话</b>礼篮垂直老站，价格上探到奢侈礼盒，评价沉淀薄弱</div></div></div>
+    <div class="comp-row"><div class="hd"><span class="no">10</span><span class="nm">Lavington Designs</span><span class="dm">lavingtondesigns.com</span><span class="pill pl-plat">BigCommerce</span><span class="pill pl-price">$18.99–108.99</span></div>
+      <div class="bd"><div class="fld"><b>产品焦点</b>monogram 刺绣礼品：毯子、背包、tote、婴儿围兜毛绒、节日服饰</div><div class="fld"><b>评价信号</b>产品卡带 +34/+38 评论标记，总量未采集到</div><div class="fld"><b>定位一句话</b>全龄段 monogram 礼品杂货型，母婴只是其中一条线</div></div></div>
+    <div class="comp-row"><div class="hd"><span class="no">11</span><span class="nm">Bunnies By The Bay</span><span class="dm">bunniesbythebay.com</span><span class="pill pl-na">平台未采集到</span><span class="pill pl-na">价格未采集到</span></div>
+      <div class="bd"><div class="fld"><b>产品焦点</b>毛绒玩具/lovey 安抚巾为主的个性化婴儿礼品，FAO Schwarz 等联名</div><div class="fld"><b>评价信号</b>未采集到</div><div class="fld"><b>定位一句话</b>间接竞品：IP 化毛绒路线，非刺绣包袋篮子</div></div></div>
   </div>
 
   <div class="sec">
     <div class="sec-h"><span class="ico">🏬</span><h2>头部平台玩家（单独归类，不算直接竞品）</h2></div>
     <p class="sec-note">这些是搜索首屏的流量占据者和大牌自营玩家，量级与独立站不同，单列不进直接竞品名单。</p>
-    <div style="overflow-x:auto">
-    <table>
-      <tr><th>玩家</th><th>角色</th><th>依据</th></tr>
-      <tr><td>Etsy</td><td>Nameli 出身平台 + 最大流量竞争面：personalized baby basket / kids backpack / dance bag 等类目均有 60+ 聚合页</td><td>5 组 WebSearch 首屏反复出现其类目聚合页</td></tr>
-      <tr><td>Amazon（KALOTOYS / mbbestie 等）</td><td>与 Nameli corduroy 名字篮同款型产品的多卖家价格战场</td><td>'custom name corduroy baby basket embroidered' 搜索首屏 5 条为 Amazon listing</td></tr>
-      <tr><td>Pottery Barn Kids</td><td>个性化背包类目搜索首位大牌，品牌信任碾压独立小站</td><td>'personalized toddler backpack' 搜索首条结果</td></tr>
-      <tr><td>Mark and Graham</td><td>Williams-Sonoma 旗下高端个性化礼赠玩家</td><td>WebSearch 发现，未单独抓站</td></tr>
-      <tr><td>Personalization Mall</td><td>个性化礼品超市型大站，SKU 广度型竞争</td><td>WebSearch 发现，未单独抓站</td></tr>
-      <tr><td>Things Remembered / Gerber</td><td>个性化婴儿礼品榜单常客大牌</td><td>WebSearch 发现，未抓站</td></tr>
-    </table>
-    </div>
+        <div class="comp-row"><div class="hd"><span class="nm">Etsy</span><span class="pill pl-plat">平台</span></div>
+      <div class="bd" style="grid-template-columns:1.2fr .8fr"><div class="fld"><b>角色</b>Nameli 出身平台 + 最大流量竞争面：personalized baby basket / kids backpack / dance bag 等类目均有 60+ 聚合页</div><div class="fld"><b>依据</b>5 组 WebSearch 首屏反复出现其类目聚合页</div></div></div>
+    <div class="comp-row"><div class="hd"><span class="nm">Amazon（KALOTOYS / mbbestie 等）</span><span class="pill pl-plat">平台</span></div>
+      <div class="bd" style="grid-template-columns:1.2fr .8fr"><div class="fld"><b>角色</b>与 Nameli corduroy 名字篮同款型产品的多卖家价格战场</div><div class="fld"><b>依据</b>'custom name corduroy baby basket embroidered' 搜索首屏 5 条为 Amazon listing</div></div></div>
+    <div class="comp-row"><div class="hd"><span class="nm">Pottery Barn Kids</span><span class="pill pl-plat">大牌自营</span></div>
+      <div class="bd" style="grid-template-columns:1.2fr .8fr"><div class="fld"><b>角色</b>个性化背包类目搜索首位大牌，品牌信任碾压独立小站</div><div class="fld"><b>依据</b>'personalized toddler backpack' 搜索首条结果</div></div></div>
+    <div class="comp-row"><div class="hd"><span class="nm">Mark and Graham</span><span class="pill pl-plat">大牌自营</span></div>
+      <div class="bd" style="grid-template-columns:1.2fr .8fr"><div class="fld"><b>角色</b>Williams-Sonoma 旗下高端个性化礼赠玩家</div><div class="fld"><b>依据</b>WebSearch 发现，未单独抓站</div></div></div>
+    <div class="comp-row"><div class="hd"><span class="nm">Personalization Mall</span><span class="pill pl-plat">大牌自营</span></div>
+      <div class="bd" style="grid-template-columns:1.2fr .8fr"><div class="fld"><b>角色</b>个性化礼品超市型大站，SKU 广度型竞争</div><div class="fld"><b>依据</b>WebSearch 发现，未单独抓站</div></div></div>
+    <div class="comp-row"><div class="hd"><span class="nm">Things Remembered / Gerber</span><span class="pill pl-plat">大牌自营</span></div>
+      <div class="bd" style="grid-template-columns:1.2fr .8fr"><div class="fld"><b>角色</b>个性化婴儿礼品榜单常客大牌</div><div class="fld"><b>依据</b>WebSearch 发现，未抓站</div></div></div>
   </div>
 
   <div class="sec">
