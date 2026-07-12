@@ -157,8 +157,8 @@ td:first-child{font-weight:800;color:var(--ink);white-space:nowrap}
         <div class="fix"><b>修法：</b>文字换深棕 #5C4327（同色系不破坏奶油调性，对比度 >7）或底色加深。</div>
       </div>
       <div class="card-shot">
-        <div class="browser"><div class="bar"><i class="dot1"></i><i class="dot2"></i><i class="dot3"></i></div><img src="assets/nameli-home-desktop-viewport.jpeg" alt="首页首屏" loading="lazy"></div>
-        <div class="shot-cap">首访首屏：Klaviyo 弹窗 + cookie 条同屏（见下）</div>
+        <img src="assets/evi-writereview.jpeg" alt="Write a Review 按钮实拍特写" style="width:220px;border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,.4)" loading="lazy">
+        <div class="shot-cap">按钮元素实拍（原图放大）· 白字奶茶底，肉眼即可见对比不足</div>
       </div>
     </div></div>
   </div>
@@ -166,28 +166,48 @@ td:first-child{font-weight:800;color:var(--ink);white-space:nowrap}
   <div class="sec">
     <div class="sec-h"><span class="ico">⚠️</span><h2>体验级（信任感漏气，低成本快修）</h2></div>
 
-    <div class="card"><div class="card-main">
-      <span class="badge b-mid">体验 · #5</span>
-      <h3>信任条「208 reviews on ___」—— 平台 logo 渲染宽度 0，句子断半截</h3>
-      <div class="kv">首页信任条本应显示「208 reviews on <strong>WiserReview</strong>」，但 logo 图（brand-icon-1-1.svg）实测渲染宽度为 <strong>0</strong>，桌面移动都只剩「208 reviews on」悬在半空——最重要的社会证明位自己漏气。</div>
-      <div class="evi">实测：wiserreview brand-icon getBoundingClientRect().width = <b>0</b>（桌面+移动截图均可见断句）</div>
-      <div class="fix"><b>修法：</b>给 logo 容器设最小宽度/检查懒加载类名；或干脆换成自有文案「4.8/5 · 208 verified reviews」加星标。</div>
+    <div class="card"><div class="card-grid">
+      <div class="card-main">
+        <span class="badge b-mid">体验 · #5</span>
+        <h3>信任条「208 reviews on ___」—— 平台 logo 渲染宽度 0，句子断半截</h3>
+        <div class="kv">首页信任条本应显示「208 reviews on <strong>WiserReview</strong>」，但 logo 图（brand-icon-1-1.svg）实测渲染宽度为 <strong>0</strong>，桌面移动都只剩「208 reviews on」悬在半空——最重要的社会证明位自己漏气。</div>
+        <div class="evi">实测：wiserreview brand-icon getBoundingClientRect().width = <b>0</b>（右图元素级特写，断句缺口清晰可见）</div>
+        <div class="fix"><b>修法：</b>给 logo 容器设最小宽度/检查懒加载类名；或干脆换成自有文案「4.8/5 · 208 verified reviews」加星标。</div>
+      </div>
+      <div class="card-shot">
+        <div class="browser"><div class="bar"><i class="dot1"></i><i class="dot2"></i><i class="dot3"></i></div><img src="assets/evi-trustbar.jpeg" alt="信任条断句特写" loading="lazy"></div>
+        <div class="shot-cap">元素级特写 · 「208 reviews on」和「Verified」之间的 logo 是空的</div>
+      </div>
     </div></div>
 
-    <div class="card"><div class="card-main">
-      <span class="badge b-mid">体验 · #6</span>
-      <h3>文案拼写错误 + 社媒 handle 全线混乱</h3>
-      <div class="kv">首页两处 slide 均写 <strong>"treadsures"</strong>（应为 treasures）、"CUSTOM GIFT MADE<strong>WITH</strong> LOVE" 缺空格；页脚号召关注 <strong>@nameli_offical</strong>（official 拼错）而实际 IG handle 是 <strong>nameli38</strong>，TikTok 是 <strong>nanmeli0</strong>——三个名字对不上，对「把名字绣对」为卖点的品牌是反向背书。</div>
-      <div class="evi">首页 DOM 文本 + 页脚 href 实测：instagram.com/nameli38 · tiktok.com/@nanmeli0 · 文案写 @nameli_offical</div>
-      <div class="fix"><b>修法：</b>typo 当天可清；社媒 handle 建议统一注册/改名为 nameli.official 一套，全渠道对齐。</div>
+    <div class="card"><div class="card-grid">
+      <div class="card-main">
+        <span class="badge b-mid">体验 · #6</span>
+        <h3>文案拼写错误 + 社媒 handle 全线混乱</h3>
+        <div class="kv">首页两处 slide 均写 <strong>"treadsures"</strong>（应为 treasures）、"CUSTOM GIFT MADE<strong>WITH</strong> LOVE" 缺空格；页面号召关注 <strong>@nameli_offical</strong>（official 拼错）而实际 IG handle 是 <strong>nameli38</strong>，TikTok 是 <strong>nanmeli0</strong>——三个名字对不上，对「把名字绣对」为卖点的品牌是反向背书。</div>
+        <div class="evi">首页 DOM 文本 + 页脚 href 实测：instagram.com/nameli38 · tiktok.com/@nanmeli0 · 文案写 @nameli_offical（右图两张元素级特写）</div>
+        <div class="fix"><b>修法：</b>typo 当天可清；社媒 handle 建议统一注册/改名为 nameli.official 一套，全渠道对齐。</div>
+      </div>
+      <div class="card-shot">
+        <div class="browser"><div class="bar"><i class="dot1"></i><i class="dot2"></i><i class="dot3"></i></div><img src="assets/evi-typo.jpeg" alt="treadsures 拼写错误特写" loading="lazy"></div>
+        <div class="shot-cap">Hero 文案原文 · "treadsures" 应为 treasures</div>
+        <div class="browser" style="margin-top:14px"><div class="bar"><i class="dot1"></i><i class="dot2"></i><i class="dot3"></i></div><img src="assets/evi-handle.jpeg" alt="nameli_offical 拼写错误特写" loading="lazy"></div>
+        <div class="shot-cap">站内号召 "@nameli_offical" · 与实际 handle nameli38 对不上</div>
+      </div>
     </div></div>
 
-    <div class="card"><div class="card-main">
-      <span class="badge b-mid">体验 · #7 · 仅首访（双测判定）</span>
-      <h3>Klaviyo 10% off 弹窗落地 0 秒即弹 + cookie 条同屏叠加</h3>
-      <div class="kv">首访落地瞬间：全屏 Klaviyo 邮箱弹窗（z-index 90000）+ 底部 cookie 条同时出现，用户没看到任何产品先吃两层打扰。<strong>复访双测不再弹</strong>（cookie 门控），故标「间歇/仅首访」不算致命——但首访恰恰是广告流量落地的那一次。</div>
-      <div class="evi">D 脚本双测：首访 fullscreenModalCount=2 → 复访=0 · 测试 locale zh-CN 已记录</div>
-      <div class="fix"><b>修法：</b>Klaviyo 触发改「滚动 50% 或停留 15s」；广告落地页流量尤其别 0 秒弹。</div>
+    <div class="card"><div class="card-grid">
+      <div class="card-main">
+        <span class="badge b-mid">体验 · #7 · 仅首访（双测判定）</span>
+        <h3>Klaviyo 10% off 弹窗落地 0 秒即弹 + cookie 条同屏叠加</h3>
+        <div class="kv">首访落地瞬间：全屏 Klaviyo 邮箱弹窗（z-index 90000）+ 底部 cookie 条同时出现，用户没看到任何产品先吃两层打扰。<strong>复访双测不再弹</strong>（cookie 门控），故标「间歇/仅首访」不算致命——但首访恰恰是广告流量落地的那一次。</div>
+        <div class="evi">D 脚本双测：首访 fullscreenModalCount=2 → 复访=0 · 测试 locale zh-CN 已记录</div>
+        <div class="fix"><b>修法：</b>Klaviyo 触发改「滚动 50% 或停留 15s」；广告落地页流量尤其别 0 秒弹。</div>
+      </div>
+      <div class="card-shot">
+        <div class="browser"><div class="bar"><i class="dot1"></i><i class="dot2"></i><i class="dot3"></i></div><img src="assets/nameli-home-desktop-viewport.jpeg" alt="首访弹窗+cookie条同屏" loading="lazy"></div>
+        <div class="shot-cap">首访实拍 · 弹窗盖首屏 + 底部 cookie 条同时在场</div>
+      </div>
     </div></div>
   </div>
 
