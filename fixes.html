@@ -84,15 +84,16 @@ td:first-child{font-weight:800;color:var(--ink);white-space:nowrap}
       <span class="badge b-p0">P0 · #1</span><span class="badge b-time">约 20 分钟</span>
       <h3>首页加 H1/H2 —— 现在整页没有一个大标题标签</h3>
       <div class="why"><b>为什么：</b>Hero 大标题「Best Sellers」实际是两个 h5 标签（其中一个是空的），Google 读不懂页面主题，自然流量入口等于焊死。这是全部问题里对流量影响最大的一条。</div>
+      <div class="why" style="background:#fff8ec">⚠️ <b>实测结构提示（2026-07-12 源码确认）：</b>桌面版 hero 标题被拆成 <b>「Best」和「Sellers」两个独立的 Stackable 标题块</b>（都是 h5），且轮播有<b>桌面/移动两套版本</b>（移动版是合并的「Best Sellers」一块）——改的时候两套都要处理，别只改了一套。</div>
       <ol class="steps">
         <li>后台左侧 <b>页面</b> → 找到首页 → <b>编辑</b>（进入块编辑器）</li>
-        <li>点中轮播图里的大标题「Best Sellers」文字块（Stackable 标题块），右侧设置面板找到 <b>HTML 标签 / Heading Tag</b> 下拉（h1~h6），把 <code>h5</code> 改成 <code>h1</code></li>
+        <li>推荐做法：把桌面版「Best」「Sellers」两个碎块<b>合并成一个标题块</b>（删一个、另一个写全文案），点中它 → 右侧设置面板 <b>HTML 标签 / Heading Tag</b> 下拉（h1~h6）→ 选 <code>h1</code>；移动版那套轮播里的「Best Sellers」块同法改</li>
         <li>标题文案顺手改成含关键词的，建议：<code>Personalized Baby Shower Gifts &amp; Name Baskets</code>（第二张轮播「Baby Shower」同法处理，但整页只能有一个 h1——第二张设为 h2）</li>
-        <li>注意：实测有一个<b>空的 h5 标题块</b>（没有文字），找到后直接删除</li>
         <li>往下滚，把「A GIFT AS UNIQUE AS THEIR NAME」等每个分区标题设为 <code>h2</code></li>
+        <li>顺手加分项：首页产品卡的商品名（Baby Shower Basket 等）实测也全是 h5——它们是「文章标题 / Post Title」块，点中后同样有标签下拉，建议统一设 <code>h3</code></li>
         <li>右上角 <b>更新</b> 保存</li>
       </ol>
-      <div class="verify"><b>验证：</b>打开 namelicraft.com 首页 → 右键「查看网页源代码」→ Ctrl+F 搜 <code>&lt;h1</code> → 能搜到且只有 1 个 = 成功。</div>
+      <div class="verify"><b>验证：</b>打开 namelicraft.com 首页 → 右键「查看网页源代码」→ Ctrl+F 搜 <code>&lt;h1</code> → 能搜到且只有 1 个 = 成功（桌面和手机各看一次，因为是两套轮播）。</div>
     </div>
 
     <div class="fixcard">
@@ -100,7 +101,7 @@ td:first-child{font-weight:800;color:var(--ink);white-space:nowrap}
       <h3>重写首页 Title —— 现在一个产品关键词都没有</h3>
       <div class="why"><b>为什么：</b>当前 title 是 <code>Nameli | Personalized Gifts</code>，baby / custom / embroidered / basket 全没进——搜索个性化婴儿礼品的人 Google 根本不知道该给你排名。</div>
       <ol class="steps">
-        <li>编辑首页时，页面下方找到 <b>Yoast SEO</b> 面板</li>
+        <li>编辑首页时，页面下方找到 <b>Yoast SEO</b> 面板（已确认站上装的是 Yoast SEO v27.9，源码实测）</li>
         <li><b>SEO 标题</b>改为：<code>Personalized Baby Shower Gifts &amp; Custom Name Baskets | Nameli</code>（约 60 字符内）</li>
         <li><b>元描述（Meta description）</b>补一句 150 字符内的卖点，建议：<code>Hand-embroidered name baskets, backpacks &amp; baby gifts. Spelling double-checked on every order. Free US shipping over $75.</code></li>
         <li>产品页同理：如 Baby Shower Basket 的 title 建议加上 Personalized → <code>Personalized Baby Shower Basket with Name | Nameli</code></li>
@@ -126,7 +127,7 @@ td:first-child{font-weight:800;color:var(--ink);white-space:nowrap}
       <h3>移动端悬浮件遮挡 —— VIP OFFER 浮标盖住了卖点文字</h3>
       <div class="why"><b>为什么：</b>手机上打开产品页，左下角 VIP OFFER 圆形浮标直接压住产品副标题和卖点列表（实测截图见诊断页 #3）。手机是主要流量入口，用户看卖点的黄金位置被自家挂件占了。</div>
       <ol class="steps">
-        <li>这个浮标是 <b>Klaviyo 弹窗表单关闭后留下的 Teaser 按钮</b>（判断依据：它只在弹过窗的会话中出现，与弹窗同生命周期）</li>
+        <li>这个浮标是 <b>Klaviyo 弹窗表单关闭后留下的 Teaser 按钮</b>（已实测确认：清状态复访 → 弹窗重现 → 关闭后浮标出现，其 DOM 就在 Klaviyo 的 <code>kl-teaser</code> 容器内）</li>
         <li>登录 <b>Klaviyo</b> → Sign-up forms → 找到「Get a 10% off coupon」这个表单 → 编辑</li>
         <li>找到 <b>Teaser</b> 选项卡：<b>关闭 Mobile 端 Teaser</b>（推荐），或把位置从左下改到不压内容的位置</li>
         <li>同一个编辑器里顺手做 P2 · #8：<b>Display / Targeting &amp; Behavior</b> 里把弹出时机从「立即」改成 <b>滚动 50% 或停留 15 秒</b>——广告落地流量第一眼别吃全屏弹窗</li>
@@ -146,21 +147,24 @@ td:first-child{font-weight:800;color:var(--ink);white-space:nowrap}
         <li>如果 WiserReview 没有颜色选项，用 CSS 兜底：后台 <b>外观 → 自定义 → 附加 CSS</b>，粘贴：</li>
       </ol>
       <pre>/* Write a Review 按钮文字加深（原白字配奶茶底看不清） */
-.Wsrspfapp-reviewapp-heAder { color: #5C4327 !important; }</pre>
-      <div class="verify"><b>验证：</b>首页评价区的「Write a Review」肉眼清晰可读。</div>
-      <div class="note">选择器 <code>.Wsrspfapp-reviewapp-heAder</code> 为 2026-07-12 实测抓取；若 WiserReview 更新后失效，右键该按钮→检查，换成当时的 class。</div>
+.WsWall-write-rev-link,
+.WsWall-write-rev-link * { color: #5C4327 !important; }</pre>
+      <div class="verify"><b>验证：</b>首页评价区的「Write a Review」肉眼清晰可读。此 CSS 已在站上实测注入验证：文字色生效、对比度从 1.71 → <b>5.38</b>（超过 WCAG AA 标准 4.5）。</div>
+      <div class="note">选择器 <code>.WsWall-write-rev-link</code> 为 2026-07-12 在站上实测抓取并验证生效；若 WiserReview 更新后失效，右键该按钮→检查，换成当时的 class。</div>
     </div>
 
     <div class="fixcard">
       <span class="badge b-p1">P1 · #6</span><span class="badge b-time">约 10 分钟</span>
       <h3>信任条「208 reviews on ___」断句 —— logo 显示宽度为 0</h3>
+      <div class="why"><b>根因（实测确认）：</b>不是图片坏了——是插件把品牌 logo 的容器（<code>.Wsrspfapp-Badge04-brand</code>）设成了 <code>display:none</code> 整块隐藏，但句子里的「on」留下了，导致断句。</div>
       <ol class="steps">
-        <li>方案 A（推荐，更干净）：在 WiserReview 挂件设置里把这条徽章文案换成自有表述 <code>4.8/5 · 208 verified reviews</code> 加星标，不依赖第三方 logo</li>
-        <li>方案 B（保留 logo）：附加 CSS 强制给 logo 宽度：</li>
+        <li>方案 A（推荐，最干净）：先去 <b>WiserReview 后台</b>找该徽章的「显示品牌标识 / Show branding」类开关打开；或干脆把徽章文案换成自有表述 <code>4.8/5 · 208 verified reviews</code> 加星标，不依赖第三方 logo</li>
+        <li>方案 B（CSS 强制显示，已实测有效）：附加 CSS 粘贴：</li>
       </ol>
-      <pre>/* 信任条 WiserReview logo 渲染宽度为 0 的修复 */
-.Wisely-Fixed-Typone-Link img { width: 90px !important; height: auto !important; }</pre>
-      <div class="verify"><b>验证：</b>首页信任条读起来是完整一句话，不再是「208 reviews on」悬在半空。</div>
+      <pre>/* 信任条品牌块被插件 display:none 隐藏的修复 */
+.Wsrspfapp-Badge04-brand { display: flex !important; }
+.Wsrspfapp-Badge04-brand img { width: auto !important; height: 18px !important; }</pre>
+      <div class="verify"><b>验证：</b>首页信任条读起来是完整一句话。此 CSS 已在站上实测注入验证：logo 显示 18px、整句变为「208 reviews on WiserReview」。</div>
     </div>
 
     <div class="fixcard">
