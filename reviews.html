@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nameli 口碑洞察报告</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#2B3A67; --teal:#00B4D8; --coral:#FF5A5A; --red:#E03131;
+  --mint:#06D6A0; --amber:#F7A800; --purple:#7B68EE;
+  --ink:#1a1a2e; --ink2:#4a4a68; --muted:#8b8ba3;
+  --bg:#f6f7fb; --card:#fff; --line:#e6e9f2;
+  --sh:0 2px 14px rgba(43,58,103,.07); --shh:0 10px 36px rgba(43,58,103,.14);
+  --r:18px; --font:'Plus Jakarta Sans','Noto Sans SC',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font);font-size:15px;line-height:1.8;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+
+.hero{background:#0e0e12;color:#fff;padding:3.6rem 1.5rem 3.4rem;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 10%,rgba(247,168,0,.18),transparent 40%),radial-gradient(circle at 85% 90%,rgba(0,180,216,.16),transparent 42%)}
+.hero-in{position:relative;z-index:2;max-width:820px;margin:0 auto}
+.eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:3px;color:var(--amber);border:1.5px solid rgba(247,168,0,.4);padding:5px 18px;border-radius:99px;margin-bottom:1.3rem}
+.hero h1{font-size:36px;font-weight:800;line-height:1.18;margin-bottom:.7rem}
+.hero p{color:rgba(255,255,255,.6);font-size:15px}
+.hero .meta{margin-top:1.4rem;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.hero .meta span{font-size:12px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);padding:5px 14px;border-radius:99px;color:rgba(255,255,255,.78)}
+
+.wrap{max-width:1080px;margin:0 auto;padding:2.5rem 1.4rem 4rem}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-bottom:2.4rem}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:20px;text-align:center}
+.stat .n{font-size:34px;font-weight:800;line-height:1}
+.stat .l{font-size:12.5px;color:var(--muted);font-weight:600;margin-top:6px}
+.n.red{color:var(--red)} .n.amber{color:var(--amber)} .n.teal{color:var(--teal)} .n.navy{color:var(--navy)}
+
+.callout{background:linear-gradient(100deg,#fff,#fbfcff);border:1px solid var(--line);border-left:5px solid var(--coral);border-radius:14px;padding:18px 22px;margin-bottom:2.6rem;box-shadow:var(--sh);font-size:14.5px;color:var(--ink2)}
+.callout b{color:var(--ink)}
+
+.sec{margin-bottom:2.8rem}
+.sec-h{display:flex;align-items:center;gap:10px;margin-bottom:1.1rem}
+.sec-h .ico{font-size:22px}
+.sec-h h2{font-size:21px;font-weight:800;color:var(--navy)}
+.sec-note{font-size:13.5px;color:var(--muted);margin:-.5rem 0 1.2rem 0}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;margin-bottom:20px;transition:box-shadow .2s,transform .2s}
+.card:hover{box-shadow:var(--shh);transform:translateY(-2px)}
+.card-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:0}
+@media(max-width:760px){.card-grid{grid-template-columns:1fr}}
+.card-main{padding:22px 24px}
+.card-shot{background:#0e0e12;display:flex;align-items:center;justify-content:center;padding:18px;border-left:1px solid var(--line)}
+@media(max-width:760px){.card-shot{border-left:none;border-top:1px solid var(--line)}}
+.badge{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.5px;padding:4px 11px;border-radius:6px;margin-bottom:10px}
+.b-fatal{background:#ffe9e9;color:var(--red)} .b-high{background:#fff4e0;color:#b06d00} .b-mid{background:#e3f9ff;color:#0883a0}
+.card h3{font-size:17px;font-weight:800;color:var(--ink);margin-bottom:8px;line-height:1.4}
+.evi{background:#f3f5fb;border-radius:10px;padding:11px 14px;font-size:13px;color:var(--ink2);margin:12px 0;font-family:ui-monospace,Menlo,monospace}
+.evi b{color:var(--red)}
+.kv{font-size:14px;color:var(--ink2);margin:8px 0}
+.kv strong{color:var(--ink)}
+.fix{background:#eefaf4;border-radius:10px;padding:11px 14px;font-size:13.5px;color:#14694a;margin-top:12px}
+.fix b{color:#0c4f37}
+
+.phone{width:215px;border:7px solid #2a2a32;border-radius:26px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.4);background:#000}
+.browser{width:100%;border-radius:10px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.4);border:1px solid #333}
+.browser .bar{background:#23232b;height:26px;display:flex;align-items:center;gap:6px;padding:0 10px}
+.browser .bar i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.dot1{background:#ff5f57}.dot2{background:#febc2e}.dot3{background:#28c840}
+.shot-cap{color:rgba(255,255,255,.5);font-size:11px;text-align:center;margin-top:10px}
+
+.chip{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;padding:7px 14px;border-radius:8px;margin:4px 6px 4px 0}
+.chip small{font-weight:500;opacity:.85}
+.cw-bad{background:#F7A800;color:#fff}
+
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);font-size:14px}
+th{background:var(--navy);color:#fff;text-align:left;padding:13px 16px;font-size:13px;font-weight:700}
+td{padding:13px 16px;border-top:1px solid var(--line);color:var(--ink2);vertical-align:top}
+td:first-child{font-weight:800;color:var(--ink);white-space:nowrap}
+.pri{font-weight:800;border-radius:6px;padding:3px 9px;font-size:12px}
+.p1{background:#ffe9e9;color:var(--red)}.p2{background:#fff4e0;color:#b06d00}.p3{background:#e3f9ff;color:#0883a0}
+
+.foot{text-align:center;color:var(--muted);font-size:12.5px;padding:2.4rem 1rem;border-top:1px solid var(--line)}
+.foot a{color:var(--teal);text-decoration:none}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:8px;align-items:start}
+
+/* 口碑页扩展（沿用模板体系） */
+.quote{background:#f3f5fb;border-left:4px solid var(--teal);border-radius:10px;padding:12px 16px;font-size:13.5px;color:var(--ink2);margin:10px 0;font-style:italic;line-height:1.7}
+.quote .who{display:block;font-style:normal;font-weight:700;font-size:12px;color:var(--muted);margin-top:6px}
+.quote.q-risk{border-left-color:var(--coral);background:#fdf3f3}
+.theme-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+@media(max-width:760px){.theme-grid{grid-template-columns:1fr}}
+.theme-grid .card{margin-bottom:0}
+.starbar{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ink2);margin:4px 0}
+.starbar .lab{width:34px;font-weight:700;color:var(--ink);white-space:nowrap}
+.starbar .track{flex:1;height:9px;background:#eceef6;border-radius:99px;overflow:hidden}
+.starbar .bar{height:100%;border-radius:99px;background:var(--teal)}
+.starbar .val{width:86px;font-size:12px;color:var(--muted);white-space:nowrap}
+.limit{background:#f0f1f6;border:1px solid var(--line);border-radius:14px;padding:18px 22px;font-size:12.5px;color:var(--muted);line-height:1.9}
+.limit b{color:var(--ink2)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-in">
+    <div class="eyebrow">REVIEWS INTELLIGENCE · 口碑洞察</div>
+    <h1>Nameli 口碑洞察报告</h1>
+    <p>namelicraft.com · 站内 81 条评论原文逐字采集 + WiserReview 星级分布实查</p>
+    <p style="font-size:13px;margin-top:.4rem;color:rgba(255,255,255,.45)">总池 208 条（WiserReview 验证 4.8/5）· 每条主题均附逐字英文原声，可回查 reviews_raw</p>
+    <div class="meta"><span>📅 2026-07-12</span><span>⭐ 4.8/5 · 208 条</span><span>📝 逐字采样 81 条</span><span>🔍 5 个产品页实抓</span></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="stats">
+    <div class="stat"><div class="n teal">4.8/5</div><div class="l">WiserReview 验证均分<br>208 条已发布</div></div>
+    <div class="stat"><div class="n navy">91.3%</div><div class="l">5★ 占比（191 条）<br>4★8 · 3★4 · 2★3 · 1★3</div></div>
+    <div class="stat"><div class="n amber">81</div><div class="l">逐字采到原文<br>占总池 208 条的 39%</div></div>
+    <div class="stat"><div class="n teal">0</div><div class="l">拼错名字投诉<br>81 条样本内零出现</div></div>
+    <div class="stat"><div class="n red">≈8</div><div class="l">发货时效抱怨条数<br>样本内第一风险主题</div></div>
+  </div>
+
+  <div class="sec" style="margin-top:-.6rem">
+    <div class="card"><div class="card-main">
+      <h3 style="font-size:15px">星级分布（WiserReview 验证页实查，2026-07-12）</h3>
+      <div class="starbar"><span class="lab">5★</span><div class="track"><div class="bar" style="width:91.3%"></div></div><span class="val">191 条 · 91.3%</span></div>
+      <div class="starbar"><span class="lab">4★</span><div class="track"><div class="bar" style="width:3.8%;background:var(--mint)"></div></div><span class="val">8 条</span></div>
+      <div class="starbar"><span class="lab">3★</span><div class="track"><div class="bar" style="width:1.9%;background:var(--amber)"></div></div><span class="val">4 条</span></div>
+      <div class="starbar"><span class="lab">2★</span><div class="track"><div class="bar" style="width:1.4%;background:var(--coral)"></div></div><span class="val">3 条</span></div>
+      <div class="starbar"><span class="lab">1★</span><div class="track"><div class="bar" style="width:1.4%;background:var(--red)"></div></div><span class="val">3 条</span></div>
+      <div class="kv" style="margin-top:10px">负面（≤3★）合计仅 10 条（4.8%），口碑基本面非常健康。</div>
+    </div></div>
+  </div>
+
+  <div class="callout">
+    <b>评价源头说明（先看这条再看数据）：</b>首页 "208 reviews + Verified" 徽章是 <b>WiserReview</b>（评价聚合插件），<b>不是 Etsy</b>。WiserReview 验证页显示店铺 2026 年 5 月接入，评价来源 =「购后邮件收集」+「从此前平台导入」（未点名 Etsy）。评论措辞里大量出现 "seller"、"this shop"、"Mark was very helpful" 等 marketplace 式用语，<b>基于措辞推断</b>历史评价很可能从某 marketplace（疑似 Etsy）导入，但 Etsy 店铺本身未能确认（3 组搜索无结果 + 直连 403）。此外：Trustpilot 无档案（404 实查）、Reddit 零提及——<b>口碑 100% 集中在自有渠道，无任何独立第三方口碑资产</b>。
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="ico">💚</span><h2>好评主题 TOP5（基于 81 条采样）</h2></div>
+    <div class="theme-grid">
+
+      <div class="card"><div class="card-main">
+        <span class="badge b-mid">TOP 1 · 约 20+ 条</span>
+        <h3>礼物场景成功：baby shower 惊艳全场</h3>
+        <div class="quote">"This basket was beautiful and was a hit at the baby shower. The lettering of Easton's name was gorgeous."<span class="who">— Ashley · 5★ · Baby Shower Basket</span></div>
+        <div class="quote">"The person the item was purchased for was emotional with joy after seeing the item."<span class="who">— Shaunna · 5★ · Plush Basket</span></div>
+        <div class="kv">买家买的不是篮子，是送礼时的社交场面。「收礼人当场感动」是这批评价里最密集的情绪，也是广告素材最该直接用的瞬间。</div>
+      </div></div>
+
+      <div class="card"><div class="card-main">
+        <span class="badge b-mid">TOP 2 · 约 15 条</span>
+        <h3>做工质量 / 手工细节</h3>
+        <div class="quote">"It is so thoughtfully made with incredible attention to detail and truly great quality. It made such a special and meaningful gift."<span class="who">— IlkaAbigail · 5★ · Baby Shower Basket</span></div>
+        <div class="kv">「手工 + 细节」被反复主动提及，说明 Nameli 的溢价支撑点（相对 $27.99 的 MamaRaya）在用户端是被感知到的。</div>
+      </div></div>
+
+      <div class="card"><div class="card-main">
+        <span class="badge b-mid">TOP 3 · 约 10 条</span>
+        <h3>实物与图片一致 / 超预期</h3>
+        <div class="quote">"Looks just like the photos!"<span class="who">— Bailey · 5★ · Baby Shower Basket</span></div>
+        <div class="quote">"It was more than I imagined it to be."<span class="who">— Aaliyah · 5★ · Baby Shower Basket</span></div>
+        <div class="kv">「实物翻车」是定制品类的通用恐惧，Nameli 把它反向做成了好评主题——这句话本身就是现成的广告文案。</div>
+      </div></div>
+
+      <div class="card"><div class="card-main">
+        <span class="badge b-mid">TOP 4 · 约 11 条</span>
+        <h3>卖家客服与主动沟通</h3>
+        <div class="quote">"Slight glitch with order but seller kept me in the loop and provided excellent customer service."<span class="who">— Gail · 5★ · Baby Shower Basket</span></div>
+        <div class="quote">"Mark was very helpful, the item arrived securely and on time."<span class="who">— Aliyah · 5★ · Baby Shower Basket</span></div>
+        <div class="kv">客户直呼店主名字 "Mark"——人格化小店温度是对抗 Amazon 大牌的心智武器，延迟提前告知、缺货给替代都被写成了好评。</div>
+      </div></div>
+
+      <div class="card"><div class="card-main">
+        <span class="badge b-mid">TOP 5 · 约 5 条</span>
+        <h3>名字个性化效果 + 拼写确认服务</h3>
+        <div class="quote">"great custmer service: seller made sure of her name spelling and also reassured me that it would arrive in time for baby shower."<span class="who">— KIM · 5★ · Baby Shower Basket</span></div>
+        <div class="kv">品类第一恐惧是名字拼错（Mamapedia / PatternReview 均有实例），Nameli 81 条样本内零拼错投诉，且有主动拼写确认记录——可验证的差异化承诺。</div>
+      </div></div>
+
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="ico">⚠️</span><h2>差评与风险主题（按频次排序）</h2></div>
+    <p class="sec-note">注意：208 条总池中 1-2★ 共 6 条原文未采到，以下主题基于 3-4★ 及 5★ 内的抱怨性内容归纳，真实差评烈度可能被低估。</p>
+    <div class="theme-grid">
+
+      <div class="card"><div class="card-main">
+        <span class="badge b-fatal">风险 #1 · 约 8 条 · 高频低烈度</span>
+        <h3>发货慢 / 晚于预估 —— 最脆弱的口碑防线</h3>
+        <div class="quote q-risk">"High-quality basket. Although it arrived two days after the estimated delivery date, I was given a heads-up and decided to keep it."<span class="who">— Sameeha · 5★ · Baby Shower Basket</span></div>
+        <div class="quote q-risk">"Loved the caddy! Just as I ordered. Only downfall was it arrived much later..."<span class="who">— TAMMY · 5★ · Corduroy Baby Basket</span></div>
+        <div class="kv">8 条提及中 6 条仍给了 5★——是店主人肉沟通把差评拦下来了。但买家全部有硬截止日期（baby shower），这套兜底不可规模化。</div>
+      </div></div>
+
+      <div class="card"><div class="card-main">
+        <span class="badge b-high">风险 #2 · 3 条</span>
+        <h3>颜色与图片有偏差</h3>
+        <div class="quote q-risk">"beautiful basket, color appeared to be beige, instead of white."<span class="who">— Kymm · 3★ · Corduroy Baby Basket（样本内唯一篮子类 3★）</span></div>
+        <div class="quote q-risk">"The yellow is more cream than butter yellow. Otherwise they are cute!"<span class="who">— Michelle · 5★ · Ballet Dance Duffel</span></div>
+        <div class="kv">颜色偏差是样本内非物流差评的主要来源，直接产生了篮子类唯一一个 3★。</div>
+      </div></div>
+
+      <div class="card"><div class="card-main">
+        <span class="badge b-high">风险 #3 · 1 条 · 低频</span>
+        <h3>质价比质疑</h3>
+        <div class="quote q-risk">"The quality is average. It's not bad, but not as nice as I hoped for the price."<span class="who">— Oliver · 3★ · Pencil Case（$22）</span></div>
+        <div class="kv">低频但出现在最低价 SKU 上；另有 2 条「缎带自己打不好」+ 1 条配件缺货（均已被客服挽回），同属低烈度长尾。</div>
+      </div></div>
+
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="ico">🎯</span><h2>卖点提炼（可直接用于广告 / 落地页）</h2></div>
+    <div style="overflow-x:auto">
+    <table>
+      <tr><th>#</th><th>卖点</th><th>依据原声</th><th>用法建议</th></tr>
+      <tr><td>1</td><td>"Looks just like the photos"</td><td>Bailey / Rickea / Nicole / Katherine 等高频原话</td><td>正中品类「实物翻车」恐惧；素材做 listing 图 vs 买家实拍对比 UGC</td></tr>
+      <tr><td>2</td><td>拼写双重确认服务</td><td>"seller made sure of her name spelling"（KIM）；81 条样本零拼错投诉</td><td>可验证的差异化承诺：「Name spelling double-checked before we stitch」</td></tr>
+      <tr><td>3</td><td>收礼人反应素材</td><td>"emotional with joy"、"a hit at the baby shower"、"Everyone loved this product"</td><td>婴儿礼品买家买的是社交场面，广告钩子直接用收礼瞬间</td></tr>
+      <tr><td>4</td><td>人格化小店 + 真人客服</td><td>客户直呼店主名 "Mark"</td><td>小店温度是对抗 Amazon 大牌的心智武器</td></tr>
+      <tr><td>5</td><td>grow-with-child 长期价值</td><td>"a good size to grow with our child"（Nicole）、"can grow with the child"（Constance）</td><td>把 $42-73 客单价合理化为「多年陪伴」而非一次性礼物</td></tr>
+    </table>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="ico">🧭</span><h2>未满足需求 / 机会点</h2></div>
+    <div class="card"><div class="card-main">
+      <div class="kv"><strong>1. 发货时效透明化（最大机会）：</strong>8/81 条提及物流焦虑，且买家全部有硬截止日期（baby shower）。机会：产品页放「Need it by a date?」日期选择器 + 生产/运输分段 ETA + 加急选项。现在靠店主人肉沟通兜底，不可规模化</div>
+      <div class="kv"><strong>2. 色彩真实性展示：</strong>3 条颜色偏差抱怨是样本内非物流差评的主要来源。机会：自然光实拍色卡、"beige-white" 类模糊色明确标注、屏幕色差免责 + 实拍视频</div>
+      <div class="kv"><strong>3. 预组装 / 礼盒代包选项：</strong>篮子需要买家自己组装打缎带，送礼场景下「到手即送」是付费点</div>
+      <div class="kv"><strong>4. 独立第三方口碑资产为零：</strong>无 Trustpilot、无 Reddit 讨论、（Etsy 未确认）。208 条好评全锁在自有站内，站外搜索 "namelicraft reviews" 什么都搜不到。机会：开 Trustpilot / Google Reviews 档案，把存量好评客户导流过去</div>
+      <div class="kv"><strong>5. 高分低量产品的评价冷启动：</strong>Floral Flap Backpack、Toddler Backpack 零评价，Silk Bag / Crossbody 仅 1-2 条，购后邮件应优先向这些 SKU 买家催评</div>
+    </div></div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="ico">🆚</span><h2>品类通用痛点 vs Nameli 表现（区分标注）</h2></div>
+    <div style="overflow-x:auto">
+    <table>
+      <tr><th>品类通用痛点（基于搜索采样）</th><th>Nameli 自身评价表现（81 条样本）</th></tr>
+      <tr><td style="white-space:normal">名字拼错、定制品不退换（Mamapedia / PatternReview 实例）</td><td>零拼错投诉，且有主动拼写确认记录 → 优势点</td></tr>
+      <tr><td style="white-space:normal">made-to-order 发货周期不可控</td><td>存在，约 8 条提及，靠沟通挽回 → 最大风险敞口</td></tr>
+      <tr><td style="white-space:normal">实物不如图（品类常识，搜索未采到大规模实例）</td><td>反向成为好评主题 TOP3（"just like the photos"）</td></tr>
+    </table>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="limit">
+      <b>采样局限声明（数据诚信）：</b><br>
+      1. 逐字采到 81/208 条；Baby Shower Basket 与 Pencil Case 页面各只展示 25 条，其余不可见<br>
+      2. 1-2★ 共 6 条原文一条都没采到（不在可见列表），差评主题归纳主要来自 3-4★ 和 5★ 内的抱怨句，真实负面烈度可能被低估<br>
+      3. 所有评论来自商家自有站点（WooCommerce + WiserReview），存在商家侧筛选/排序的可能性；无任何独立第三方平台可交叉验证（Trustpilot 404、Reddit 零结果）<br>
+      4. Etsy 店铺未确认：搜索无结果、直连 403 被反爬拦截；「评价从 Etsy 导入」仅为基于评论措辞的推断<br>
+      5. Pencil Case 61 条中仅 6 条完整原文（WebFetch 摘要限制），该 SKU 的主题频次统计不完整<br>
+      6. 品类通用痛点部分基于 2 组 WebSearch 采样，非系统性差评库统计
+    </div>
+  </div>
+
+</div>
+
+<div class="foot">
+  Nameli 口碑洞察报告 · 2026-07-12 · 数据来源：站内 WooCommerce 产品页 + WiserReview 验证页实查<br>
+  <a href="index.html">← 返回报告中心</a>
+</div>
+
+</body>
+</html>
