@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nameli 竞品 Meta 广告情报</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#2B3A67; --teal:#00B4D8; --coral:#FF5A5A; --red:#E03131;
+  --mint:#06D6A0; --amber:#F7A800; --purple:#7B68EE;
+  --ink:#1a1a2e; --ink2:#4a4a68; --muted:#8b8ba3;
+  --bg:#f6f7fb; --card:#fff; --line:#e6e9f2;
+  --sh:0 2px 14px rgba(43,58,103,.07); --shh:0 10px 36px rgba(43,58,103,.14);
+  --r:18px; --font:'Plus Jakarta Sans','Noto Sans SC',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font);font-size:15px;line-height:1.8;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+.hero{background:#0e0e12;color:#fff;padding:3.6rem 1.5rem 3.4rem;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 10%,rgba(247,168,0,.18),transparent 40%),radial-gradient(circle at 85% 90%,rgba(0,180,216,.16),transparent 42%)}
+.hero-in{position:relative;z-index:2;max-width:840px;margin:0 auto}
+.eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:3px;color:var(--amber);border:1.5px solid rgba(247,168,0,.4);padding:5px 18px;border-radius:99px;margin-bottom:1.3rem}
+.hero h1{font-size:36px;font-weight:800;line-height:1.18;margin-bottom:.7rem}
+.hero p{color:rgba(255,255,255,.6);font-size:15px}
+.hero .meta{margin-top:1.4rem;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.hero .meta span{font-size:12px;font-weight:600;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);padding:5px 14px;border-radius:99px;color:rgba(255,255,255,.78)}
+.wrap{max-width:1080px;margin:0 auto;padding:2.5rem 1.4rem 4rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin-bottom:2.4rem}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:20px;text-align:center}
+.stat .n{font-size:34px;font-weight:800;line-height:1}
+.stat .l{font-size:12.5px;color:var(--muted);font-weight:600;margin-top:6px}
+.n.red{color:var(--red)} .n.amber{color:var(--amber)} .n.teal{color:var(--teal)} .n.navy{color:var(--navy)} .n.mint{color:var(--mint)}
+.callout{background:linear-gradient(100deg,#fff,#fbfcff);border:1px solid var(--line);border-left:5px solid var(--coral);border-radius:14px;padding:18px 22px;margin-bottom:2.6rem;box-shadow:var(--sh);font-size:14.5px;color:var(--ink2)}
+.callout b{color:var(--ink)}
+.sec{margin-bottom:2.8rem}
+.sec-h{display:flex;align-items:center;gap:10px;margin-bottom:1.1rem}
+.sec-h .ico{font-size:22px}
+.sec-h h2{font-size:21px;font-weight:800;color:var(--navy)}
+.sec-note{font-size:13.5px;color:var(--muted);margin:-.5rem 0 1.2rem 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;margin-bottom:20px;transition:box-shadow .2s,transform .2s}
+.card:hover{box-shadow:var(--shh);transform:translateY(-2px)}
+.card-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:0}
+@media(max-width:760px){.card-grid{grid-template-columns:1fr}}
+.card-main{padding:22px 24px}
+.card-shot{background:#0e0e12;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;border-left:1px solid var(--line)}
+@media(max-width:760px){.card-shot{border-left:none;border-top:1px solid var(--line)}}
+.badge{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.5px;padding:4px 11px;border-radius:6px;margin-bottom:10px}
+.b-fatal{background:#ffe9e9;color:var(--red)} .b-high{background:#fff4e0;color:#b06d00} .b-mid{background:#e3f9ff;color:#0883a0} .b-good{background:#e7f9f0;color:#0d7a4f}
+.card h3{font-size:17px;font-weight:800;color:var(--ink);margin-bottom:8px;line-height:1.4}
+.evi{background:#f3f5fb;border-radius:10px;padding:11px 14px;font-size:13px;color:var(--ink2);margin:12px 0;font-family:ui-monospace,Menlo,monospace}
+.evi b{color:var(--red)}
+.kv{font-size:14px;color:var(--ink2);margin:8px 0}
+.kv strong{color:var(--ink)}
+.fix{background:#eefaf4;border-radius:10px;padding:11px 14px;font-size:13.5px;color:#14694a;margin-top:12px}
+.fix b{color:#0c4f37}
+.browser{width:100%;border-radius:10px;overflow:hidden;box-shadow:0 8px 30px rgba(0,0,0,.4);border:1px solid #333}
+.browser .bar{background:#23232b;height:26px;display:flex;align-items:center;gap:6px;padding:0 10px}
+.browser .bar i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.dot1{background:#ff5f57}.dot2{background:#febc2e}.dot3{background:#28c840}
+.shot-cap{color:rgba(255,255,255,.5);font-size:11px;text-align:center;margin-top:10px}
+.quote{background:#fbf7f0;border-left:4px solid var(--amber);border-radius:8px;padding:10px 14px;margin:8px 0;font-size:13.5px;color:#5a4a33;font-style:italic}
+.quote small{display:block;font-style:normal;color:var(--muted);font-size:11.5px;margin-top:2px}
+.comp-row{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--sh);padding:18px 20px;margin-bottom:14px}
+.comp-row .hd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.comp-row .nm{font-size:16.5px;font-weight:800;color:var(--ink)}
+.pill{font-size:11.5px;font-weight:700;padding:3px 10px;border-radius:99px}
+.pl-hot{background:#ffe9e9;color:var(--red)}.pl-mid{background:#fff4e0;color:#b06d00}.pl-low{background:#f0f1f5;color:var(--muted)}.pl-plat{background:#e3f9ff;color:#0883a0}
+.comp-row .bd{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:16px}
+@media(max-width:760px){.comp-row .bd{grid-template-columns:1fr}}
+.comp-row .fld b{display:block;font-size:11px;font-weight:800;letter-spacing:1px;color:var(--muted);margin-bottom:2px}
+.comp-row .fld{font-size:13.5px;color:var(--ink2);line-height:1.7}
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);font-size:14px}
+th{background:var(--navy);color:#fff;text-align:left;padding:13px 16px;font-size:13px;font-weight:700}
+td{padding:13px 16px;border-top:1px solid var(--line);color:var(--ink2);vertical-align:top}
+td:first-child{font-weight:800;color:var(--ink)}
+.pri{font-weight:800;border-radius:6px;padding:3px 9px;font-size:12px}
+.p1{background:#ffe9e9;color:var(--red)}.p2{background:#fff4e0;color:#b06d00}.p3{background:#e3f9ff;color:#0883a0}
+.foot{text-align:center;color:var(--muted);font-size:12.5px;padding:2.4rem 1rem;border-top:1px solid var(--line)}
+.foot a{color:var(--teal);text-decoration:none;font-weight:700}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-in">
+    <div class="eyebrow">COMPETITOR META ADS INTEL · 广告库逐家实抓</div>
+    <h1>竞品 Meta 广告情报</h1>
+    <p>6 家竞品 + Nameli 自身 · Ad Library 免登录实勘 · 重点拆解 active 且投放 ≥1 个月的长青素材</p>
+    <p style="font-size:13px;margin-top:.4rem;color:rgba(255,255,255,.45)">文案全部逐字采样自广告库 · 局限：文本搜索深页可能有未展开的更老素材，开跑日以可见首屏为准</p>
+    <div class="meta"><span>📅 2026-07-12</span><span>🇺🇸 US · active</span><span>📊 按印象量排序取首屏</span></div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="stats">
+    <div class="stat"><div class="n red">97</div><div class="l">Caden Lane 在投<br>品类最强投手</div></div>
+    <div class="stat"><div class="n amber">68</div><div class="l">Little Chicken 在投<br>全压 Back-to-School</div></div>
+    <div class="stat"><div class="n teal">32</div><div class="l">Marleylilly 在投<br>大促月抛型</div></div>
+    <div class="stat"><div class="n navy">67天</div><div class="l">最长长青素材<br>Caden Lane 5/6 开跑</div></div>
+    <div class="stat"><div class="n mint">0</div><div class="l">Nameli 当前在投<br>9 条已全停</div></div>
+  </div>
+
+  <div class="callout">
+    <b>一句话结论：</b>品类的钱现在全压在 <b>Back-to-School 窗口</b>（背包/饭盒/铅笔袋，7 月正当时）；被时间验证的长青公式只有两个——<b>真人评价体</b>和<b>品类目录广撒</b>（均来自 Caden Lane，38-67 天不下架）。Nameli 已测的 9 条全是「产品介绍型」，恰是没人拿来当长青的角度；手里 81 条带图好评就是现成的评价体弹药。
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="ico">📡</span><h2>各家在投盘面（2026-07-12 实抓）</h2></div>
+
+    <div class="comp-row"><div class="hd"><span class="nm">Caden Lane</span><span class="pill pl-hot">约 97 条在投</span><span class="pill pl-plat">最老 5/6 · 67 天</span></div>
+      <div class="bd"><div class="fld"><b>投放风格</b>大盘长跑 + 新品 drop 轮发，赢家素材复制 4 条并跑放量</div><div class="fld"><b>长青证据</b>5/6 目录广告印象量第一；6/4 评价体 4 条同创意并行 38 天</div><div class="fld"><b>角度库</b>真人评价体 / 名字防丢 / 花色 drop / 预产期首单 15% off / 3am 情绪共鸣 / 姐妹装</div></div></div>
+
+    <div class="comp-row"><div class="hd"><span class="nm">Little Chicken</span><span class="pill pl-hot">约 68 条在投</span><span class="pill pl-mid">最老 6/25 · 17 天</span></div>
+      <div class="bd"><div class="fld"><b>投放风格</b>BTS 全力压注 + 常开购物车挽回层</div><div class="fld"><b>长青证据</b>首屏内暂无 ≥1 个月素材（6/25 批次为最老）</div><div class="fld"><b>角度库</b>情绪 reveal / 100+ 贴片定制深度 / 去年售罄稀缺 / PEOPLE 杂志背书 / FREEPATCH 赠品码</div></div></div>
+
+    <div class="comp-row"><div class="hd"><span class="nm">Marleylilly（主号+Kids）</span><span class="pill pl-mid">约 32 条在投</span><span class="pill pl-low">全部 7 月开跑 · 月抛</span></div>
+      <div class="bd"><div class="fld"><b>投放风格</b>大促驱动，素材整月换新，无长青沉淀</div><div class="fld"><b>长青证据</b>无（首屏 30 条全为 7/1-7/10）</div><div class="fld"><b>角度库</b>半年大促 80% off + EXTRA25 / BTS 包+饭盒 / 教师人群专属 / 「monogram 含在价格里」/ FREE GIFT 码</div></div></div>
+
+    <div class="comp-row"><div class="hd"><span class="nm">Sammy + Nat</span><span class="pill pl-low">2 条在投（7/9 起）</span></div>
+      <div class="bd"><div class="fld"><b>投放风格</b>小预算维持</div><div class="fld"><b>长青证据</b>无</div><div class="fld"><b>角度库</b>礼赠策展：「curated by theme, color, and occasion — gifting effortless」</div></div></div>
+
+    <div class="comp-row"><div class="hd"><span class="nm">KnittyBaby</span><span class="pill pl-low">0 在投</span></div>
+      <div class="bd"><div class="fld"><b>投放风格</b>不投 Meta（page id 61558125433839 实查，US + 全球均 0）</div><div class="fld"><b>启示</b>1000+ 站内评价 + SEO 自然位（custom name baby basket SERP 第一）足以驱动生意</div><div class="fld"><b>对 Nameli</b>证明该品类「自然流 + 评价资产」路线也走得通，广告不是唯一解</div></div></div>
+
+    <div class="comp-row"><div class="hd"><span class="nm">MamaRaya</span><span class="pill pl-low">文本搜索无可见广告</span></div>
+      <div class="bd"><div class="fld"><b>说明</b>关键词/精确短语/域名三种搜法均未命中其广告（未能定位其广告主页 page ID）</div><div class="fld"><b>判读</b>无可见投放证据，按「基本不投或极少投」处理</div><div class="fld"><b>对 Nameli</b>最直接的品类对手不烧广告——付费流量层竞争压力比预想小</div></div></div>
+
+    <div class="comp-row" style="border:2px solid var(--amber)"><div class="hd"><span class="nm">Nameli（甲方对照）</span><span class="pill pl-mid">0 在投 · 9 条 6/29-7/10 全停</span></div>
+      <div class="bd"><div class="fld"><b>已测角度</b>全部为产品介绍型（emoji bullets 复用 PDP 卖点）</div><div class="fld"><b>问题</b>10 天全下架 = 没跑出赢家就撤，且没测过评价体/情绪/场景任一已验证角度</div><div class="fld"><b>基建</b>三像素 + Klaviyo 齐备，随时可重启</div></div></div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="ico">🏆</span><h2>长青素材聚光灯（active ≥1 个月，全品类仅两组）</h2></div>
+    <p class="sec-note">「跑了一个月还在投」= 广告主用真金白银验证过的赢家。本次采样内只有 Caden Lane 有。</p>
+
+    <div class="card"><div class="card-grid">
+      <div class="card-main">
+        <span class="badge b-good">长青 · 67 天 · 印象量第一位</span>
+        <h3>品类目录广撒型（Caden Lane #1518806429964351）</h3>
+        <div class="quote">"Shop our HUGE selection of stylish swaddles, knot gowns, mommy robes, personalized gifts and toddler pajamas."<small>2026-05-06 开跑 · 至今在投 · 按印象量排序位居其 97 条广告首位</small></div>
+        <div class="kv"><strong>拆解：</strong>一句话塞满品类关键词（襁褓/睡袍/妈妈袍/个性化礼品/睡衣），"HUGE selection" 打宽度，大概率配目录/轮播素材跑宽受众拉新。长命的原因：不绑定任何促销节点，全年可跑。</div>
+        <div class="fix"><b>Nameli 可抄：</b>「Personalized baskets, backpacks, duffels & pencil cases — all with their name hand-embroidered.」全品类一句话 + 轮播 4 SKU，同样全年可跑。</div>
+      </div>
+      <div class="card-shot">
+        <div class="browser"><div class="bar"><i class="dot1"></i><i class="dot2"></i><i class="dot3"></i></div><img src="assets/ads-cadenlane.jpeg" alt="Caden Lane 广告库截图" loading="lazy"></div>
+        <div class="shot-cap">Caden Lane 广告库实拍 · 约 97 条在投</div>
+      </div>
+    </div></div>
+
+    <div class="card"><div class="card-main">
+      <span class="badge b-good">长青 · 38 天 · 同创意 4 条并行放量</span>
+      <h3>真人评价体 + 囤货暗示（Caden Lane 6/4 批次 ×4）</h3>
+      <div class="quote">"I stocked up for the whole year!" "Best deal ever!" 🤯<small>#1477165137785280 / #1676591450056930 / #1690334445633359 / #2142745706506728 · 均 2026-06-04 开跑</small></div>
+      <div class="kv"><strong>拆解：</strong>整条文案就是两句顾客原话——零品牌自夸，用引号制造真实感，"stocked up" 暗示复购囤货。同一创意开 4 条广告 = 测出赢家后横向放量的标准操作。同家还有一条评价体变体：<i>"Real moms, real reviews: 'Worth every penny.' 'So soft I cried.' 'Ordered 5 more.'"</i></div>
+      <div class="fix"><b>Nameli 可抄（弹药现成）：</b>81 条采样好评里随手可组："It looked so professionally done!" / "The person was emotional with joy" / "Exceeded my expectations" —— 三句拼一条评价体广告，配开箱实拍图。</div>
+    </div></div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="ico">🎨</span><h2>已验证 Angle 全景（文案逐字采样）</h2></div>
+    <table>
+      <tr><th>Angle</th><th>谁在用</th><th>原文样例</th><th>Nameli 适配</th></tr>
+      <tr><td>真人评价体</td><td>Caden Lane（长青38天）</td><td>"So soft I cried." "Ordered 5 more."</td><td>★★★ 81 条好评现成，首推</td></tr>
+      <tr><td>情绪 reveal</td><td>Little Chicken</td><td>"Imagine their face when they see their name on it.🥹"</td><td>★★★ 与「刺绣名字」卖点天配</td></tr>
+      <tr><td>品类目录广撒</td><td>Caden Lane（长青67天）</td><td>"HUGE selection of ... personalized gifts"</td><td>★★☆ SKU 少但可轮播 4 主力款</td></tr>
+      <tr><td>名字防丢实用</td><td>Caden Lane / Little Chicken</td><td>"Their name on their backpack... No mix-ups."</td><td>★★★ 背包/铅笔袋 BTS 主打</td></tr>
+      <tr><td>定制深度数字化</td><td>Little Chicken</td><td>"Choose from HUNDREDS of patches"</td><td>★★☆ 可说「4 尺寸×4 色×名字线色」</td></tr>
+      <tr><td>BTS 稀缺回货</td><td>Little Chicken</td><td>"They sold out last year, so don't wait"</td><td>★★☆ 7 月窗口正当时</td></tr>
+      <tr><td>大促折扣码</td><td>Marleylilly</td><td>"UP TO 80% OFF + code EXTRA25"</td><td>★☆☆ 客单 $22-73 慎打深折</td></tr>
+      <tr><td>细分人群（教师）</td><td>Marleylilly</td><td>"Hey Teachers! ✏️"</td><td>★★☆ 可测「送幼师/舞蹈老师」</td></tr>
+      <tr><td>孕期获客</td><td>Caden Lane</td><td>"Your due date will be here... 15% OFF first order"</td><td>★★☆ baby shower 送礼人更准</td></tr>
+      <tr><td>购物车挽回</td><td>Little Chicken（常开）</td><td>"Still thinking about it?" / "Your cart is still full"</td><td>★★★ 像素已埋，零成本先开</td></tr>
+    </table>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="ico">📸</span><h2>广告库实拍存档</h2></div>
+    <div class="card"><div class="card-grid">
+      <div class="card-main">
+        <span class="badge b-mid">Little Chicken</span>
+        <h3>约 68 条在投 · BTS 全力压注</h3>
+        <div class="kv">背包 $68-72（Nameli 同类 $35），敢投的底气是「100+ 贴片定制深度 + PEOPLE 背书 + 售罄稀缺」的组合叙事。</div>
+        <div class="quote">"Back to school just got SO much cuter. Personalized backpacks with 100+ patches... Shop before they sell out"<small>2026-07-07 起多条并行</small></div>
+      </div>
+      <div class="card-shot">
+        <div class="browser"><div class="bar"><i class="dot1"></i><i class="dot2"></i><i class="dot3"></i></div><img src="assets/ads-littlechicken.jpeg" alt="Little Chicken 广告库截图" loading="lazy"></div>
+        <div class="shot-cap">Little Chicken 广告库实拍</div>
+      </div>
+    </div></div>
+    <div class="card"><div class="card-grid">
+      <div class="card-main">
+        <span class="badge b-mid">Marleylilly</span>
+        <h3>约 32 条在投（主号 + Kids 号）· 大促月抛型</h3>
+        <div class="kv">素材全部 7 月开跑、无长青——打法是「促销节点驱动 + 整月换血」，依赖 80% off 深折与折扣码矩阵（EXTRA25/ML3925）。低价量贩模式专属，Nameli 不宜照抄折扣深度，但「Prices include your monogram」的价格透明话术值得借鉴。</div>
+      </div>
+      <div class="card-shot">
+        <div class="browser"><div class="bar"><i class="dot1"></i><i class="dot2"></i><i class="dot3"></i></div><img src="assets/ads-marleylilly.jpeg" alt="Marleylilly 广告库截图" loading="lazy"></div>
+        <div class="shot-cap">Marleylilly 广告库实拍</div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="ico">🎯</span><h2>Nameli 重启投放建议（基于以上采样）</h2></div>
+    <table>
+      <tr><th>优先级</th><th>动作</th><th>依据</th></tr>
+      <tr><td><span class="pri p1">P0</span></td><td>7 月内上 BTS 素材：Toddler Backpack + Pencil Case，「name = no mix-ups」角度</td><td>三家主力全在压 BTS 窗口，Nameli 品类正对口，9 月就晚了</td></tr>
+      <tr><td><span class="pri p1">P0</span></td><td>评价体广告 2-3 条：好评原话 + 开箱实拍图</td><td>品类唯一验证过 ≥38 天的长青公式；81 条好评弹药现成</td></tr>
+      <tr><td><span class="pri p2">P1</span></td><td>常开 retargeting 层（cart 挽回）</td><td>Little Chicken 常开打法；Nameli 像素已埋齐，零边际成本</td></tr>
+      <tr><td><span class="pri p2">P1</span></td><td>情绪 reveal 视频：孩子看到名字瞬间</td><td>Little Chicken 在投角度，与刺绣名字卖点天配</td></tr>
+      <tr><td><span class="pri p3">P2</span></td><td>全品类轮播长青（不绑节点全年跑）</td><td>Caden Lane 67 天素材的公式</td></tr>
+      <tr><td><span class="pri p3">P2</span></td><td>测「送幼师/舞蹈老师」细分人群</td><td>Marleylilly teacher 角度 + Nameli 已有 Dance Duffel SKU</td></tr>
+    </table>
+  </div>
+
+</div>
+
+<div class="foot">
+  Nameli 全链路品牌调研 · 竞品 Meta 广告情报 · 2026-07-12 Ad Library 实抓<br>
+  <a href="index.html">← 返回报告中心</a>
+</div>
+
+</body>
+</html>
